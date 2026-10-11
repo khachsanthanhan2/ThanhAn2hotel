@@ -65,6 +65,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         #language-status:empty { display:none; }
         @media(min-width:1024px){ .menu-toggle{display:none;} #mobile-menu{display:none;} }
         @media(max-width:640px){ html{font-size:17px;} header .header-inner{padding-left:16px;padding-right:16px;} .hotel-brand{font-size:16px;} .hotel-brand small{font-size:10px;} .header-actions{gap:4px;} h1{font-size:2.1rem!important;} h2{font-size:1.8rem!important;} #explore .grid{grid-template-columns:1fr;} #explore img{max-height:280px;} }
+
+        .booking-request{max-width:680px;margin:32px auto;text-align:left;background:#fff;border:1px solid #e5ded9;border-radius:20px;padding:28px;box-shadow:0 8px 28px #4a332a08}
+        .booking-request h2{font-size:1.35rem;color:#4a332a;margin:0 0 20px}
+        .booking-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+        .booking-fields label,.message-label{display:block;font-size:.94rem;font-weight:600;color:#4a332a;min-width:0}
+        .booking-room{grid-column:1/-1}
+        .booking-fields input,.booking-fields select,.booking-request textarea{display:block;box-sizing:border-box;width:100%;min-width:0;max-width:100%;border:1px solid #d6ccc6;border-radius:10px;padding:12px;margin-top:7px;background:#fff;color:#334155;font:400 16px/1.6 Arial,Helvetica,sans-serif}
+        .booking-request textarea{resize:vertical;background:#fdf8f6;min-height:154px}
+        .message-label{margin-top:20px}
+        .booking-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+        .booking-buttons a,.booking-buttons button{flex:1;min-height:48px;border-radius:10px;padding:13px 16px;text-align:center;font-size:16px;font-weight:600;background:#a66e5a;color:white;cursor:pointer}
+        .booking-buttons button{background:white;color:#4a332a;border:1px solid #a66e5a}
+        .booking-status{color:#9c3023;font-size:14px;margin-top:10px}
+        .booking-status:empty{display:none}
+        .booking-hint{font-size:14px;color:#526174;line-height:1.65;margin-top:14px}
+        @media(max-width:480px){.booking-request{padding:20px}.booking-fields{grid-template-columns:1fr}.booking-buttons{flex-direction:column}}
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans flex flex-col min-h-screen">
@@ -102,9 +118,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h1 class="text-4xl md:text-6xl font-serif text-brand-900 leading-tight mb-6">
                     Điểm dừng chân lý tưởng <br class="hidden md:block"/> tại <span class="italic text-brand-600">Thành An 2 Hotel</span>
                 </h1>
-                <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-                    Tận hưởng không gian sạch sẽ, yên tĩnh và dịch vụ chu đáo ngay tại trung tâm Thành Vinh, Nghệ An. Nơi hoàn hảo cho chuyến công tác hay nghỉ dưỡng của bạn.
-                </p>
+                <form id="booking-request" class="booking-request" aria-label="Hỏi phòng trống">
+                    <h2>Hỏi phòng trống</h2>
+                    <div class="booking-fields">
+                        <label>Ngày nhận phòng<input id="check-in" name="checkin" type="date" required></label>
+                        <label>Ngày trả phòng<input id="check-out" name="checkout" type="date" required></label>
+                        <label class="booking-room">Loại phòng<select id="booking-room" name="room">
+                            <option value="king">Phòng đôi giường King — 300.000đ/đêm</option>
+                            <option value="triple">Triple Room — 350.000đ/đêm</option>
+                        </select></label>
+                    </div>
+                    <label class="message-label" for="booking-message">Tin nhắn soạn sẵn</label>
+                    <textarea id="booking-message" rows="5" readonly class="notranslate" translate="no"></textarea>
+                    <p id="booking-status" class="booking-status" role="status"></p>
+                    <div class="booking-buttons">
+                        <a id="booking-sms" href="sms:0904055828">Gửi tin nhắn SMS</a>
+                        <button id="booking-zalo" type="button">Sao chép &amp; mở Zalo</button>
+                    </div>
+                    <p class="booking-hint">Với Zalo, dán tin nhắn đã sao chép vào cuộc trò chuyện rồi gửi. Khách sạn sẽ xác nhận phòng trống và đặt phòng qua tin nhắn.</p>
+                </form>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#rooms" class="px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center">
                         Xem Phòng & Bảng Giá
@@ -131,13 +163,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="absolute top-0 inset-x-0 h-1 bg-brand-500 z-10"></div>
                         
                         <div class="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                            <img loading="lazy" src="IMG_20260304_194141.jpg" alt="Deluxe King Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <img loading="lazy" src="IMG_20260304_194141.jpg" alt="Phòng đôi giường King" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm notranslate">
                                 Deluxe
                             </div>
                         </div>
                         <div class="p-8 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Deluxe King Room</h3>
+                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Phòng đôi giường King</h3>
                             <p class="text-slate-600 mb-6 flex-grow">Phòng giường lớn dành cho 2 người lớn và 1 em bé. Không gian thoải mái cho chuyến công tác hoặc kỳ nghỉ của gia đình nhỏ.</p>
                             
                             <div class="border-t border-slate-100 pt-6 mt-auto">
@@ -174,6 +206,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white relative border-t border-slate-200">
+             <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Hình Ảnh Khách Sạn</h2>
+                    <div class="w-24 h-1 bg-brand-100 mx-auto rounded">
+                        <div class="w-12 h-full bg-brand-500 rounded"></div>
+                    </div>
+                    <p class="mt-4 text-slate-500">Không gian thực tế tại Thành An 2</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- ẢNH LỚN: MẶT TIỀN KHÁCH SẠN -->
+                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group md:col-span-2 md:row-span-2 shadow-sm">
+                        <img loading="lazy" src="IMG_20260228_091659.jpg" alt="Mặt tiền khách sạn Thành An 2 về đêm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    
+                    <!-- ẢNH 2: BÃI ĐỖ XE NGOÀI TRỜI -->
+                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
+                        <img loading="lazy" src="file_00000000157c71faa4b4de1c70e590ea.png" alt="Bãi đỗ xe ngoài trời rộng rãi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    
+                    <!-- ẢNH 3: CHI TIẾT GIƯỜNG NGỦ -->
+                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
+                        <img loading="lazy" src="IMG_1784197184690_1784536812597.jpg" alt="Chi tiết chăn ga gối đệm thêu logo Thành An Hotel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    
+                    <!-- ẢNH 4: KHU VỰC THANG MÁY -->
+                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
+                        <img loading="lazy" src="file_00000000df2071faa319f0b31a291e6b.png" alt="Khu vực thang máy tiện lợi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    
+                    <!-- ẢNH 5: TIỆN NGHI TRONG PHÒNG -->
+                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
+                        <img loading="lazy" src="IMG_1784197187153_1784536813902 (1).jpg" alt="Góc tiện nghi trong phòng nghỉ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
             </div>
@@ -222,57 +293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <!-- OTA Partners Section -->
-        <section class="py-16 bg-white relative border-b border-slate-100">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-10">
-                    <h3 class="text-2xl md:text-3xl font-serif text-brand-900 mb-4">Bạn cũng có thể đặt phòng qua các kênh OTA</h3>
-                    <div class="w-16 h-1 bg-brand-100 mx-auto rounded mb-4">
-                        <div class="w-8 h-full bg-brand-500 rounded"></div>
-                    </div>
-                    <p class="text-slate-500">Thành An 2 tự hào là đối tác của các nền tảng du lịch hàng đầu</p>
-                </div>
-                
-                <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-                    
-                    <!-- Booking.com -->
-                    <a href="https://www.booking.com/searchresults.vi.html?ss=Khách+sạn+Thành+An+2+Vinh" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#003580]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Booking.com">
-                        <span class="text-[#003580] font-black text-xl font-sans tracking-tighter group-hover:scale-105 transition-transform">Booking.com</span>
-                    </a>
 
-                    <!-- Agoda -->
-                    <a href="https://www.agoda.com/vi-vn/khach-san-thanh-an-2/hotel/vinh-vn.html" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#f7525a]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Agoda">
-                        <div class="flex items-center gap-1 group-hover:scale-105 transition-transform">
-                            <span class="flex gap-0.5 mt-0.5">
-                                <span class="w-2 h-2 rounded-full bg-[#f7525a]"></span>
-                                <span class="w-2 h-2 rounded-full bg-[#f7525a]"></span>
-                            </span>
-                            <span class="text-[#f7525a] font-bold text-2xl font-sans tracking-tight leading-none lowercase">agoda</span>
-                        </div>
-                    </a>
-
-                    <!-- Trip.com (Đã cập nhật link trực tiếp) -->
-                    <a href="https://vn.trip.com/hotels/vinh-city-hotel-detail-133990790/khach-san-thanh-an-2/" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#3264FF]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Trip.com">
-                        <span class="text-[#3264FF] font-black text-xl font-sans italic group-hover:scale-105 transition-transform">Trip.com</span>
-                    </a>
-
-                    <!-- Traveloka (Đã cập nhật link trực tiếp) -->
-                    <a href="https://www.traveloka.com/vi-vn/hotel/vietnam/khach-san-thanh-an-2-9000008359081" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#1BA0E2]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Traveloka">
-                        <div class="flex items-center group-hover:scale-105 transition-transform">
-                            <!-- Chim Traveloka cách điệu bằng SVG -->
-                            <svg class="w-6 h-6 mr-1.5 text-[#1BA0E2]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.5 15.5c0 3.866-3.134 7-7 7s-7-3.134-7-7c0-.41.035-.812.102-1.2l3.415-5.692L15.5 1.5l7 13.3c.068.388.102.79.102 1.2zM2.5 15.5c0-1.933 1.567-3.5 3.5-3.5s3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5-3.5-1.567-3.5-3.5z"/></svg>
-                            <span class="text-[#1BA0E2] font-bold text-xl font-sans tracking-tight">traveloka</span>
-                        </div>
-                    </a>
-
-                    <!-- Expedia -->
-                    <a href="https://www.expedia.com.vn/Hotel-Search?destination=Vinh&q=Khách+sạn+Thành+An+2" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#00005E]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Expedia">
-                        <div class="flex items-center group-hover:scale-105 transition-transform">
-                            <span class="text-[#00005E] font-bold text-xl font-sans tracking-tight">expedia</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <section id="explore" class="py-24 bg-slate-50 relative">
             <div class="max-w-6xl mx-auto px-6">
@@ -453,44 +474,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
         
-        <section class="py-24 bg-white relative border-t border-slate-200">
-             <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Hình Ảnh Khách Sạn</h2>
-                    <div class="w-24 h-1 bg-brand-100 mx-auto rounded">
-                        <div class="w-12 h-full bg-brand-500 rounded"></div>
-                    </div>
-                    <p class="mt-4 text-slate-500">Không gian thực tế tại Thành An 2</p>
-                </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- ẢNH LỚN: MẶT TIỀN KHÁCH SẠN -->
-                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group md:col-span-2 md:row-span-2 shadow-sm">
-                        <img loading="lazy" src="IMG_20260228_091659.jpg" alt="Mặt tiền khách sạn Thành An 2 về đêm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    
-                    <!-- ẢNH 2: BÃI ĐỖ XE NGOÀI TRỜI -->
-                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img loading="lazy" src="file_00000000157c71faa4b4de1c70e590ea.png" alt="Bãi đỗ xe ngoài trời rộng rãi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    
-                    <!-- ẢNH 3: CHI TIẾT GIƯỜNG NGỦ -->
-                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img loading="lazy" src="IMG_1784197184690_1784536812597.jpg" alt="Chi tiết chăn ga gối đệm thêu logo Thành An Hotel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    
-                    <!-- ẢNH 4: KHU VỰC THANG MÁY -->
-                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img loading="lazy" src="file_00000000df2071faa319f0b31a291e6b.png" alt="Khu vực thang máy tiện lợi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    
-                    <!-- ẢNH 5: TIỆN NGHI TRONG PHÒNG -->
-                    <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img loading="lazy" src="IMG_1784197187153_1784536813902 (1).jpg" alt="Góc tiện nghi trong phòng nghỉ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section id="location" class="py-24 bg-slate-50 relative border-t border-slate-200">
             <div class="max-w-6xl mx-auto px-6">
@@ -532,6 +516,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                          <!-- Mã nhúng Google Map -->
                          <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Khách%20sạn%20Thành%20An%202,%2051%20Trường%20Chinh,%20Thành%20Vinh,%20Nghệ%20An,%20Việt%20Nam&t=&z=17&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full pointer-events-none"></iframe>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white relative border-b border-slate-100">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl md:text-3xl font-serif text-brand-900 mb-4">Bạn cũng có thể đặt phòng qua các kênh OTA</h3>
+                    <div class="w-16 h-1 bg-brand-100 mx-auto rounded mb-4">
+                        <div class="w-8 h-full bg-brand-500 rounded"></div>
+                    </div>
+                    <p class="text-slate-500">Thành An 2 tự hào là đối tác của các nền tảng du lịch hàng đầu</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+                    
+                    <!-- Booking.com -->
+                    <a href="https://www.booking.com/searchresults.vi.html?ss=Khách+sạn+Thành+An+2+Vinh" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#003580]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Booking.com">
+                        <span class="text-[#003580] font-black text-xl font-sans tracking-tighter group-hover:scale-105 transition-transform">Booking.com</span>
+                    </a>
+
+                    <!-- Agoda -->
+                    <a href="https://www.agoda.com/vi-vn/khach-san-thanh-an-2/hotel/vinh-vn.html" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#f7525a]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Agoda">
+                        <div class="flex items-center gap-1 group-hover:scale-105 transition-transform">
+                            <span class="flex gap-0.5 mt-0.5">
+                                <span class="w-2 h-2 rounded-full bg-[#f7525a]"></span>
+                                <span class="w-2 h-2 rounded-full bg-[#f7525a]"></span>
+                            </span>
+                            <span class="text-[#f7525a] font-bold text-2xl font-sans tracking-tight leading-none lowercase">agoda</span>
+                        </div>
+                    </a>
+
+                    <!-- Trip.com (Đã cập nhật link trực tiếp) -->
+                    <a href="https://vn.trip.com/hotels/vinh-city-hotel-detail-133990790/khach-san-thanh-an-2/" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#3264FF]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Trip.com">
+                        <span class="text-[#3264FF] font-black text-xl font-sans italic group-hover:scale-105 transition-transform">Trip.com</span>
+                    </a>
+
+                    <!-- Traveloka (Đã cập nhật link trực tiếp) -->
+                    <a href="https://www.traveloka.com/vi-vn/hotel/vietnam/khach-san-thanh-an-2-9000008359081" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#1BA0E2]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Traveloka">
+                        <div class="flex items-center group-hover:scale-105 transition-transform">
+                            <!-- Chim Traveloka cách điệu bằng SVG -->
+                            <svg class="w-6 h-6 mr-1.5 text-[#1BA0E2]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.5 15.5c0 3.866-3.134 7-7 7s-7-3.134-7-7c0-.41.035-.812.102-1.2l3.415-5.692L15.5 1.5l7 13.3c.068.388.102.79.102 1.2zM2.5 15.5c0-1.933 1.567-3.5 3.5-3.5s3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5-3.5-1.567-3.5-3.5z"/></svg>
+                            <span class="text-[#1BA0E2] font-bold text-xl font-sans tracking-tight">traveloka</span>
+                        </div>
+                    </a>
+
+                    <!-- Expedia -->
+                    <a href="https://www.expedia.com.vn/Hotel-Search?destination=Vinh&q=Khách+sạn+Thành+An+2" target="_blank" rel="noopener noreferrer" class="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#00005E]/30 hover:bg-white transition-all duration-300 flex items-center justify-center min-w-[150px] group" title="Đặt phòng qua Expedia">
+                        <div class="flex items-center group-hover:scale-105 transition-transform">
+                            <span class="text-[#00005E] font-bold text-xl font-sans tracking-tight">expedia</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -613,6 +649,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Thay đổi từ display:none sang tàng hình để script của Google vẫn chạy được -->
     <div id="google_translate_element" style="opacity:0; width:0; height:0; position:absolute; z-index:-1; overflow:hidden;"></div>
     <script>
+
+        const bookingForm=document.getElementById('booking-request');
+        const checkIn=document.getElementById('check-in');
+        const checkOut=document.getElementById('check-out');
+        const bookingRoom=document.getElementById('booking-room');
+        const bookingMessage=document.getElementById('booking-message');
+        const bookingStatus=document.getElementById('booking-status');
+        const smsLink=document.getElementById('booking-sms');
+        function localDate(date){return date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');}
+        function nextDay(value){const date=new Date(value+'T12:00:00');date.setDate(date.getDate()+1);return localDate(date);}
+        function displayDate(value){return value.split('-').reverse().join('/');}
+        checkIn.min=localDate(new Date());checkIn.value=checkIn.min;
+        checkOut.min=nextDay(checkIn.value);checkOut.value=checkOut.min;
+        function updateBooking(){
+            checkOut.min=checkIn.value?nextDay(checkIn.value):checkIn.min;
+            if(!checkIn.value||!checkOut.value||checkIn.value<checkIn.min||checkOut.value<=checkIn.value){
+                bookingMessage.value='';bookingStatus.textContent='Vui lòng chọn ngày nhận phòng từ hôm nay và ngày trả phòng sau ngày nhận phòng.';
+                smsLink.removeAttribute('href');return false;
+            }
+            const room=bookingRoom.value==='king'?'Phòng đôi giường King (2 người lớn, 1 em bé), giá 300.000đ/phòng/đêm':'Triple Room (3 người lớn, 1 em bé), giá 350.000đ/phòng/đêm';
+            bookingMessage.value='Chào khách sạn Thành An 2, tôi muốn hỏi phòng trống:\n'+room+'\nNhận phòng: '+displayDate(checkIn.value)+'\nTrả phòng: '+displayDate(checkOut.value)+'\nKhách sạn kiểm tra và xác nhận giúp tôi nhé.';
+            const separator=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';
+            smsLink.href='sms:0904055828'+separator+'body='+encodeURIComponent(bookingMessage.value);
+            bookingStatus.textContent='';return true;
+        }
+        checkIn.addEventListener('change',()=>{
+            if(checkIn.value&&(!checkOut.value||checkOut.value<=checkIn.value))checkOut.value=nextDay(checkIn.value);
+            updateBooking();
+        });
+        checkOut.addEventListener('change',updateBooking);
+        bookingRoom.addEventListener('change',updateBooking);
+        bookingForm.addEventListener('submit',e=>{e.preventDefault();updateBooking();});
+        smsLink.addEventListener('click',e=>{if(!updateBooking()){e.preventDefault();bookingForm.reportValidity();}});
+        document.getElementById('booking-zalo').addEventListener('click',async()=>{
+            if(!updateBooking()){bookingForm.reportValidity();return;}
+            try{
+                await navigator.clipboard.writeText(bookingMessage.value);
+                bookingStatus.textContent='Đã sao chép. Dán tin nhắn vào Zalo rồi gửi cho khách sạn.';
+                window.location.href='https://zalo.me/0904055828';
+            }catch(error){
+                bookingMessage.focus();bookingMessage.select();
+                bookingStatus.textContent='Hãy sao chép tin nhắn trong ô trên, sau đó mở Zalo bằng nút ZALO bên cạnh.';
+            }
+        });
+        updateBooking();
+
         const menuToggle=document.getElementById('menu-toggle');
         const mobileMenu=document.getElementById('mobile-menu');
         function closeMenu(){mobileMenu.hidden=true;menuToggle.setAttribute('aria-expanded','false');}
