@@ -12,17 +12,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khách sạn Thành An 2 | Đặt phòng ngay tại Nghệ An</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Arial', 'Helvetica', 'sans-serif'],
+                        serif: ['Arial', 'Helvetica', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -48,6 +45,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         #goog-gt-tt { display: none !important; top: 0px !important; }
         .goog-tooltip skiptranslate { display: none !important; top: 0px !important; }
         .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
+        /* Vietnamese-safe system fonts; comfortable reading on all screens. */
+        html { font-size:17px; scroll-padding-top:100px; }
+        body { font-family:Arial,Helvetica,sans-serif; line-height:1.75; }
+        h1,h2,h3,h4,.font-serif { font-family:Arial,Helvetica,sans-serif!important; }
+        h1,h2,h3 { font-weight:600; line-height:1.35!important; }
+        .text-xs { font-size:.82rem; line-height:1.6; }
+        .text-sm { font-size:.94rem; line-height:1.65; }
+        .font-light { font-weight:400; }
+        .text-slate-500 { color:#526174; }
+        .language-select { font:600 14px Arial,sans-serif; color:#4a332a; background:#fff; border:1px solid #d6ccc6; border-radius:8px; min-height:44px; padding:8px 5px; max-width:90px; }
+        .header-actions { display:flex; align-items:center; gap:10px; }
+        .menu-toggle { display:flex; align-items:center; gap:5px; min-height:44px; padding:8px; font-size:15px; }
+        a:focus-visible,button:focus-visible,select:focus-visible { outline:3px solid #a66e5a; outline-offset:4px; }
+        #mobile-menu[hidden] { display:none; }
+        #mobile-menu a { display:block; padding:12px 24px; }
+        #language-status { position:absolute; right:16px; top:74px; max-width:300px; background:white; box-shadow:0 4px 20px #0002; padding:12px; border-radius:8px; font-size:14px; }
+        #language-status:empty { display:none; }
+        @media(min-width:1024px){ .menu-toggle{display:none;} #mobile-menu{display:none;} }
+        @media(max-width:640px){ html{font-size:17px;} header .header-inner{padding-left:16px;padding-right:16px;} .hotel-brand{font-size:16px;} .hotel-brand small{font-size:10px;} .header-actions{gap:4px;} h1{font-size:2.1rem!important;} h2{font-size:1.8rem!important;} #explore .grid{grid-template-columns:1fr;} #explore img{max-height:280px;} }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans flex flex-col min-h-screen">
@@ -56,53 +73,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center transition-transform hover:scale-105">
-                <!-- CHÈN LOGO CỦA BẠN VÀO ĐÂY: Thay đổi đường link trong src="" bằng tên file logo của bạn (ví dụ: src="logo.png") -->
-                <img src="https://placehold.co/180x50/ffffff/1d2939?text=TA+THANH+AN+2&font=playfair-display" alt="Logo Khách sạn Thành An 2" class="h-10 md:h-12 w-auto object-contain drop-shadow-sm">
-            </a>
-            <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-600 items-center">
-                <a href="#about" class="hover:text-brand-600 transition-colors uppercase tracking-wider text-xs">Giới thiệu</a>
-                <a href="#rooms" class="hover:text-brand-600 transition-colors uppercase tracking-wider text-xs">Phòng nghỉ</a>
-                <a href="#contact" class="hover:text-brand-600 transition-colors uppercase tracking-wider text-xs">Liên hệ</a>
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="header-inner max-w-6xl mx-auto px-6 h-20 flex items-center justify-between gap-3">
+            <a href="#about" class="hotel-brand font-bold text-brand-900 tracking-wide notranslate" aria-label="Thành An 2 Hotel — Trang chủ">THÀNH AN 2<small class="block text-xs tracking-widest font-normal">HOTEL · VINH</small></a>
+            <nav class="hidden lg:flex gap-6 font-medium text-slate-600 items-center text-sm" aria-label="Điều hướng chính">
+                <a href="#about">Giới thiệu</a><a href="#rooms">Phòng nghỉ</a><a href="#explore">Khám phá Vinh</a><a href="#location">Vị trí</a><a href="#contact">Liên hệ</a>
             </nav>
-            
-            <div class="flex items-center gap-2 md:gap-4">
-                <!-- Nút chuyển ngôn ngữ -->
-                <div class="relative group cursor-pointer">
-                    <div class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition-colors p-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span id="current-lang-display" class="font-bold text-xs uppercase notranslate">VI</span>
-                        <svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                    <!-- Menu thả xuống chọn ngôn ngữ -->
-                    <div class="absolute right-0 mt-1 w-36 bg-white rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.1)] border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50 overflow-hidden">
-                        <div class="py-1">
-                            <button onclick="changeLanguage('vi')" class="flex items-center w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-600 notranslate font-medium transition-colors">🇻🇳 Tiếng Việt</button>
-                            <button onclick="changeLanguage('en')" class="flex items-center w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-600 notranslate font-medium transition-colors">🇬🇧 English</button>
-                            <button onclick="changeLanguage('zh-CN')" class="flex items-center w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-600 notranslate font-medium transition-colors">🇨🇳 中文</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="md:hidden text-slate-600 hover:text-brand-600 p-2 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+            <div class="header-actions">
+                <select id="language-select" class="language-select notranslate" aria-label="Language / Ngôn ngữ" translate="no">
+                    <option value="vi">VI</option><option value="en">EN</option><option value="zh-CN">中文</option>
+                </select>
+                <button type="button" class="menu-toggle text-brand-900" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">Menu ☰</button>
             </div>
+            <p id="language-status" role="status" class="notranslate" translate="no"></p>
         </div>
+        <nav id="mobile-menu" aria-label="Menu điện thoại" class="bg-white border-t border-slate-100" hidden>
+            <a href="#about">Giới thiệu</a><a href="#rooms">Phòng nghỉ</a><a href="#explore">Khám phá Vinh</a><a href="#location">Vị trí</a><a href="#contact">Liên hệ</a>
+        </nav>
     </header>
 
     <main class="flex-grow pt-20">
-        <section class="relative hero-pattern pt-24 pb-32 md:pt-40 md:pb-48 overflow-hidden border-b border-slate-200">
+        <section id="about" class="relative hero-pattern pt-24 pb-32 md:pt-40 md:pb-48 overflow-hidden border-b border-slate-200">
             <!-- Decorative circle -->
             <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-50 opacity-50 blur-3xl"></div>
             
             <div class="relative max-w-4xl mx-auto px-6 text-center z-10">
                 <span class="text-brand-600 font-semibold tracking-widest uppercase text-sm mb-4 block">Khách sạn & Dịch vụ lưu trú</span>
                 <h1 class="text-4xl md:text-6xl font-serif text-brand-900 leading-tight mb-6">
-                    Trải nghiệm kỳ nghỉ tuyệt vời <br class="hidden md:block"/> tại <span class="italic text-brand-600">Thành An 2 Hotel</span>
+                    Điểm dừng chân lý tưởng <br class="hidden md:block"/> tại <span class="italic text-brand-600">Thành An 2 Hotel</span>
                 </h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                     Tận hưởng không gian sạch sẽ, yên tĩnh và dịch vụ chu đáo ngay tại trung tâm Thành Vinh, Nghệ An. Nơi hoàn hảo cho chuyến công tác hay nghỉ dưỡng của bạn.
@@ -111,12 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="#rooms" class="px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center">
                         Xem Phòng & Bảng Giá
                     </a>
-                    <div class="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-900 rounded-full font-medium border border-slate-200 shadow-sm">
-                        <span class="mr-2 text-brand-500">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
-                        </span>
-                        Ưu đãi 5% khi đặt trước
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -124,57 +117,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section id="rooms" class="py-24 bg-white relative">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Các Hạng Phòng</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Lựa chọn phòng của bạn</h2>
                     <div class="w-24 h-1 bg-brand-100 mx-auto rounded">
                         <div class="w-12 h-full bg-brand-500 rounded"></div>
                     </div>
                     <p class="mt-4 text-slate-500">Lựa chọn không gian phù hợp với nhu cầu của bạn</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Standard Room -->
-                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
-                        <div class="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                            <img src="IMG_20260304_194126.jpg" alt="Phòng Standard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-brand-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm notranslate">
-                                Standard
-                            </div>
-                        </div>
-                        <div class="p-8 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Phòng Standard</h3>
-                            <p class="text-slate-600 mb-6 flex-grow">Phù hợp cho 1-2 người, thiết kế gọn gàng, view hướng thành phố, đầy đủ tiện nghi cơ bản.</p>
-                            
-                            <div class="border-t border-slate-100 pt-6 mt-auto">
-                                <div class="flex items-end justify-between mb-4">
-                                    <span class="text-sm text-slate-500">Chỉ từ</span>
-                                    <h4 class="text-2xl font-bold text-brand-600">310.000<span class="text-sm font-normal text-slate-500">đ/đêm</span></h4>
-                                </div>
-                                <a href="tel:0904055828" class="block w-full py-3 px-4 bg-slate-50 text-brand-900 text-center rounded-xl font-semibold border border-slate-200 hover:bg-brand-50 hover:border-brand-200 transition-colors">
-                                    Liên hệ đặt phòng
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="grid md:grid-cols-2 gap-8">
                     <!-- Deluxe Room -->
-                    <div class="bg-white rounded-2xl overflow-hidden border border-brand-100 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col relative transform md:-translate-y-4">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-brand-100 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col relative">
                         <!-- Best Value Badge -->
                         <div class="absolute top-0 inset-x-0 h-1 bg-brand-500 z-10"></div>
                         
                         <div class="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                            <img src="IMG_20260304_194141.jpg" alt="Phòng Deluxe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <img loading="lazy" src="IMG_20260304_194141.jpg" alt="Deluxe King Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm notranslate">
                                 Deluxe
                             </div>
                         </div>
                         <div class="p-8 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Phòng Deluxe</h3>
-                            <p class="text-slate-600 mb-6 flex-grow">Không gian rộng hơn cho 2 người, view thành phố đẹp, nội thất nâng cấp mang lại sự thoải mái tối đa.</p>
+                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Deluxe King Room</h3>
+                            <p class="text-slate-600 mb-6 flex-grow">Phòng giường lớn dành cho 2 người lớn và 1 em bé. Không gian thoải mái cho chuyến công tác hoặc kỳ nghỉ của gia đình nhỏ.</p>
                             
                             <div class="border-t border-slate-100 pt-6 mt-auto">
                                 <div class="flex items-end justify-between mb-4">
-                                    <span class="text-sm text-slate-500">Chỉ từ</span>
-                                    <h4 class="text-2xl font-bold text-brand-600">330.000<span class="text-sm font-normal text-slate-500">đ/đêm</span></h4>
+                                    <span class="text-sm text-slate-500">Giá phòng</span>
+                                    <h4 class="text-2xl font-bold text-brand-600">300.000<span class="text-sm font-normal text-slate-500">đ/phòng/đêm</span></h4>
                                 </div>
                                 <a href="tel:0904055828" class="block w-full py-3 px-4 bg-brand-600 text-white text-center rounded-xl font-semibold hover:bg-brand-700 shadow-md transition-all">
                                     Liên hệ đặt phòng
@@ -186,19 +155,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Triple Room -->
                     <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
                         <div class="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                            <img src="IMG_20260302_110722.jpg" alt="Phòng Triple" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <img loading="lazy" src="IMG_20260302_110722.jpg" alt="Triple Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-brand-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm notranslate">
                                 Triple
                             </div>
                         </div>
                         <div class="p-8 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Phòng Triple</h3>
-                            <p class="text-slate-600 mb-6 flex-grow">Lý tưởng cho nhóm bạn hoặc gia đình nhỏ. Không gian vô cùng rộng rãi, trang bị đầy đủ tiện ích.</p>
+                            <h3 class="text-2xl font-serif text-brand-900 mb-2">Triple Room</h3>
+                            <p class="text-slate-600 mb-6 flex-grow">Dành cho 3 người lớn và 1 em bé. Lựa chọn thuận tiện cho gia đình hoặc nhóm bạn cùng lưu trú.</p>
                             
                             <div class="border-t border-slate-100 pt-6 mt-auto">
                                 <div class="flex items-end justify-between mb-4">
-                                    <span class="text-sm text-slate-500">Chỉ từ</span>
-                                    <h4 class="text-2xl font-bold text-brand-600">370.000<span class="text-sm font-normal text-slate-500">đ/đêm</span></h4>
+                                    <span class="text-sm text-slate-500">Giá phòng</span>
+                                    <h4 class="text-2xl font-bold text-brand-600">350.000<span class="text-sm font-normal text-slate-500">đ/phòng/đêm</span></h4>
                                 </div>
                                 <a href="tel:0904055828" class="block w-full py-3 px-4 bg-slate-50 text-brand-900 text-center rounded-xl font-semibold border border-slate-200 hover:bg-brand-50 hover:border-brand-200 transition-colors">
                                     Liên hệ đặt phòng
@@ -308,7 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section id="explore" class="py-24 bg-slate-50 relative">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Khám Phá Vinh - Nghệ An</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Khám phá Vinh</h2>
                     <div class="w-24 h-1 bg-brand-100 mx-auto rounded">
                         <div class="w-12 h-full bg-brand-500 rounded"></div>
                     </div>
@@ -326,7 +295,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Item 1 -->
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="thanh-co-vinh-acc-1.webp" alt="Thành cổ Vinh" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="thanh-co-vinh-acc-1.webp" alt="Thành cổ Vinh" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900">Thành Cổ Vinh</h4>
@@ -337,7 +306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Item 2 -->
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="images.jfif" alt="Quảng trường" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="images.jfif" alt="Quảng trường" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900">Quảng Trường Hồ Chí Minh</h4>
@@ -348,7 +317,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Item 3 -->
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="5-1649520027.jpg" alt="Phố đi bộ" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="5-1649520027.jpg" alt="Phố đi bộ" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900">Phố Đi Bộ TP Vinh</h4>
@@ -360,7 +329,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100 relative overflow-hidden group">
                                 <div class="absolute inset-0 bg-brand-50 opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4 border-2 border-brand-200 shadow-sm">
-                                    <img src="Cua-Lof.jpg" alt="Biển Cửa Lò" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <img loading="lazy" src="Cua-Lof.jpg" alt="Biển Cửa Lò" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div>
                                     <div class="flex items-center gap-2">
@@ -384,7 +353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Dining 1 -->
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="unnamed.webp" alt="Cháo Lươn Bà Lan" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="unnamed.webp" alt="Cháo Lươn Bà Lan" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900 notranslate">Cháo Lươn Bà Lan</h4>
@@ -395,7 +364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Dining 2 -->
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="com-nieu-vinh-xua-toplistnghean-1.webp" alt="Cơm Niêu Vinh Xưa" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="com-nieu-vinh-xua-toplistnghean-1.webp" alt="Cơm Niêu Vinh Xưa" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900 notranslate">Cơm Niêu Vinh Xưa</h4>
@@ -406,7 +375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                              <!-- Dining 3 -->
                              <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="nha-hang-hai-san-hang-duy-toplistnghean-1.webp" alt="Hải sản Hằng Duy" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="nha-hang-hai-san-hang-duy-toplistnghean-1.webp" alt="Hải sản Hằng Duy" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900 notranslate">Nhà Hàng Hằng Duy</h4>
@@ -417,7 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Dining 4 -->
                             <div class="flex items-start bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                 <div class="w-24 h-24 shrink-0 bg-slate-200 rounded-lg overflow-hidden mr-4">
-                                    <img src="unnamed (5).webp" alt="Nhà Hàng Việt Đức" class="w-full h-full object-cover">
+                                    <img loading="lazy" src="unnamed (5).webp" alt="Nhà Hàng Việt Đức" class="w-full h-full object-cover">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-brand-900 notranslate">Nhà Hàng Việt Đức</h4>
@@ -439,7 +408,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <!-- Cafe 1 -->
                         <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group">
                             <div class="aspect-square overflow-hidden bg-slate-100">
-                                <img src="unnamed (4).webp" alt="Lim Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img loading="lazy" src="unnamed (4).webp" alt="Lim Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 text-center">
                                 <h4 class="font-bold text-brand-900 notranslate">Lim Coffee</h4>
@@ -450,7 +419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <!-- Cafe 2 -->
                         <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group">
                             <div class="aspect-square overflow-hidden bg-slate-100">
-                                <img src="unnamed (3).webp" alt="Feribe Cafe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img loading="lazy" src="unnamed (3).webp" alt="Feribe Cafe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 text-center">
                                 <h4 class="font-bold text-brand-900 notranslate">Feribe Cafe</h4>
@@ -461,7 +430,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <!-- Cafe 3 -->
                         <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group">
                             <div class="aspect-square overflow-hidden bg-slate-100">
-                                <img src="unnamed (2).webp" alt="An Cát Viên" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img loading="lazy" src="unnamed (2).webp" alt="An Cát Viên" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 text-center">
                                 <h4 class="font-bold text-brand-900 notranslate">An Cát Viên</h4>
@@ -472,7 +441,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <!-- Cafe 4 -->
                         <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group">
                             <div class="aspect-square overflow-hidden bg-slate-100">
-                                <img src="unnamed (1).webp" alt="Mori Signature" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img loading="lazy" src="unnamed (1).webp" alt="Mori Signature" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 text-center">
                                 <h4 class="font-bold text-brand-900 notranslate">Mori Signature</h4>
@@ -497,33 +466,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <!-- ẢNH LỚN: MẶT TIỀN KHÁCH SẠN -->
                     <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group md:col-span-2 md:row-span-2 shadow-sm">
-                        <img src="IMG_20260228_091659.jpg" alt="Mặt tiền khách sạn Thành An 2 về đêm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <img loading="lazy" src="IMG_20260228_091659.jpg" alt="Mặt tiền khách sạn Thành An 2 về đêm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     </div>
                     
                     <!-- ẢNH 2: BÃI ĐỖ XE NGOÀI TRỜI -->
                     <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img src="file_00000000157c71faa4b4de1c70e590ea.png" alt="Bãi đỗ xe ngoài trời rộng rãi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img loading="lazy" src="file_00000000157c71faa4b4de1c70e590ea.png" alt="Bãi đỗ xe ngoài trời rộng rãi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     
                     <!-- ẢNH 3: CHI TIẾT GIƯỜNG NGỦ -->
                     <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img src="IMG_1784197184690_1784536812597.jpg" alt="Chi tiết chăn ga gối đệm thêu logo Thành An Hotel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img loading="lazy" src="IMG_1784197184690_1784536812597.jpg" alt="Chi tiết chăn ga gối đệm thêu logo Thành An Hotel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     
                     <!-- ẢNH 4: KHU VỰC THANG MÁY -->
                     <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img src="file_00000000df2071faa319f0b31a291e6b.png" alt="Khu vực thang máy tiện lợi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img loading="lazy" src="file_00000000df2071faa319f0b31a291e6b.png" alt="Khu vực thang máy tiện lợi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     
                     <!-- ẢNH 5: TIỆN NGHI TRONG PHÒNG -->
                     <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden group shadow-sm">
-                        <img src="IMG_1784197187153_1784536813902 (1).jpg" alt="Góc tiện nghi trong phòng nghỉ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img loading="lazy" src="IMG_1784197187153_1784536813902 (1).jpg" alt="Góc tiện nghi trong phòng nghỉ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-slate-50 relative border-t border-slate-200">
+        <section id="location" class="py-24 bg-slate-50 relative border-t border-slate-200">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-4">Vị Trí & Chỉ Đường</h2>
@@ -541,7 +510,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <svg class="w-6 h-6 text-brand-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             <span>51 Trường Chinh, phường Thành Vinh, Nghệ An</span> 
                         </p>
-                        <p class="text-slate-600 text-left">Nằm ở vị trí trung tâm, cách Ga Vinh chỉ vài phút di chuyển, rất thuận lợi để quý khách kết nối đến các khu vực mua sắm, ăn uống và điểm tham quan du lịch.</p>
+                        <p class="text-slate-600 text-left">Nằm ở trung tâm Vinh, thuận tiện di chuyển đến Ga Vinh, khu công nghiệp VSIP Nghệ An và sân bay Vinh, cũng như các địa điểm ăn uống, mua sắm và tham quan trong thành phố.</p>
                         
                         <div class="pt-4">
                             <a href="https://www.google.com/maps/dir/?api=1&destination=Khách+sạn+Thành+An+2,+51+Trường+Chinh,+Thành+Vinh,+Nghệ+An,+Việt+Nam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white rounded-full font-semibold hover:bg-brand-700 transition-all shadow-[0_4px_15px_rgba(166,110,90,0.4)] hover:shadow-lg hover:-translate-y-1 w-full md:w-auto">
@@ -644,38 +613,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Thay đổi từ display:none sang tàng hình để script của Google vẫn chạy được -->
     <div id="google_translate_element" style="opacity:0; width:0; height:0; position:absolute; z-index:-1; overflow:hidden;"></div>
     <script>
+        const menuToggle=document.getElementById('menu-toggle');
+        const mobileMenu=document.getElementById('mobile-menu');
+        function closeMenu(){mobileMenu.hidden=true;menuToggle.setAttribute('aria-expanded','false');}
+        menuToggle.addEventListener('click',()=>{const open=mobileMenu.hidden;mobileMenu.hidden=!open;menuToggle.setAttribute('aria-expanded',String(open));});
+        mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();}});
+        const languageSelect=document.getElementById('language-select');
+        const languageStatus=document.getElementById('language-status');
+        let translationTimer;
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'vi',
-                includedLanguages: 'vi,en,zh-CN',
-                autoDisplay: false
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage:'vi',includedLanguages:'vi,en,zh-CN',autoDisplay:false},'google_translate_element');
         }
-
-        // Hàm kích hoạt chuyển đổi ngôn ngữ khi bấm nút
-        function changeLanguage(lang) {
-            // Lấy thẻ select do Google tạo ra
-            var selectField = document.querySelector(".goog-te-combo");
-            
-            if(selectField) {
-                // Thay đổi giá trị và kích hoạt sự kiện thay đổi
-                selectField.value = lang;
-                selectField.dispatchEvent(new Event('change'));
-            } else {
-                // Fallback: Nếu widget chưa kịp tải, sử dụng cookie để ép dịch và tải lại trang
-                document.cookie = "googtrans=/vi/" + lang + "; path=/;";
-                document.cookie = "googtrans=/vi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
+        languageSelect.addEventListener('change',()=>{
+            clearInterval(translationTimer);
+            let attempts=0;
+            const selected=languageSelect.value;
+            languageStatus.textContent='Loading translation…';
+            function applyLanguage(){
+                const field=document.querySelector('.goog-te-combo');
+                if(field && Array.from(field.options).some(o=>o.value===selected)){
+                    field.value=selected;field.dispatchEvent(new Event('change',{bubbles:true}));
+                    languageStatus.textContent='';clearInterval(translationTimer);return true;
+                }
+                if(++attempts>=20){clearInterval(translationTimer);languageStatus.textContent='Translation unavailable. Please try again later.';}
+                return false;
             }
-            
-            // Cập nhật chữ trên nút hiển thị
-            const display = document.getElementById('current-lang-display');
-            if(display) {
-                if(lang === 'vi') display.innerText = 'VI';
-                if(lang === 'en') display.innerText = 'EN';
-                if(lang === 'zh-CN') display.innerText = 'CN';
-            }
-        }
+            if(!applyLanguage())translationTimer=setInterval(applyLanguage,400);
+        });
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
