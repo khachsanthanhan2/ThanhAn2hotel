@@ -118,8 +118,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h1 class="text-4xl md:text-6xl font-serif text-brand-900 leading-tight mb-6">
                     Điểm dừng chân lý tưởng <br class="hidden md:block"/> tại <span class="italic text-brand-600">Thành An 2 Hotel</span>
                 </h1>
-                <form id="booking-request" class="booking-request" aria-label="Hỏi phòng trống">
-                    <h2>Hỏi phòng trống</h2>
+                <form id="booking-request" class="booking-request" aria-label="Nhắn tin đặt phòng">
+                    <h2>Nhắn tin đặt phòng</h2>
                     <div class="booking-fields">
                         <label>Ngày nhận phòng<input id="check-in" name="checkin" type="date" required></label>
                         <label>Ngày trả phòng<input id="check-out" name="checkout" type="date" required></label>
@@ -135,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <a id="booking-sms" href="sms:0904055828">Gửi tin nhắn SMS</a>
                         <button id="booking-zalo" type="button">Sao chép &amp; mở Zalo</button>
                     </div>
-                    <p class="booking-hint">Với Zalo, dán tin nhắn đã sao chép vào cuộc trò chuyện rồi gửi. Khách sạn sẽ xác nhận phòng trống và đặt phòng qua tin nhắn.</p>
+                    <p class="booking-hint">Với Zalo, dán tin nhắn đã sao chép vào cuộc trò chuyện rồi gửi. Khách sạn sẽ xác nhận đặt phòng qua tin nhắn.</p>
                 </form>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#rooms" class="px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center">
@@ -188,7 +188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
                         <div class="aspect-[4/3] bg-slate-100 relative overflow-hidden">
                             <img loading="lazy" src="IMG_20260302_110722.jpg" alt="Triple Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-brand-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm notranslate">
+                            <div class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm notranslate">
                                 Triple
                             </div>
                         </div>
@@ -201,7 +201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <span class="text-sm text-slate-500">Giá phòng</span>
                                     <h4 class="text-2xl font-bold text-brand-600">350.000<span class="text-sm font-normal text-slate-500">đ/phòng/đêm</span></h4>
                                 </div>
-                                <a href="tel:0904055828" class="block w-full py-3 px-4 bg-slate-50 text-brand-900 text-center rounded-xl font-semibold border border-slate-200 hover:bg-brand-50 hover:border-brand-200 transition-colors">
+                                <a href="tel:0904055828" class="block w-full py-3 px-4 bg-brand-600 text-white text-center rounded-xl font-semibold hover:bg-brand-700 shadow-md transition-all">
                                     Liên hệ đặt phòng
                                 </a>
                             </div>
@@ -252,7 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <section class="py-16 bg-brand-50 border-y border-brand-100">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 text-center">
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-4 text-center">
                     <div class="px-2">
                         <div class="w-12 h-12 mx-auto bg-white rounded-full flex items-center justify-center text-brand-600 mb-4 shadow-sm hover:scale-110 transition-transform">
                             <!-- Giặt sấy icon -->
@@ -280,13 +280,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                         <h4 class="font-semibold text-brand-900 text-sm md:text-base">Bãi đậu xe rộng rãi</h4>
                     </div>
-                    <!-- Mục Trung tâm TP chiếm 2 cột trên điện thoại để nằm giữa đẹp hơn -->
-                    <div class="px-2 col-span-2 md:col-span-1">
+                    <!-- Vị trí trung tâm -->
+                    <div class="px-2">
                         <div class="w-12 h-12 mx-auto bg-white rounded-full flex items-center justify-center text-brand-600 mb-4 shadow-sm hover:scale-110 transition-transform">
                             <!-- Trung tâm icon -->
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         </div>
                         <h4 class="font-semibold text-brand-900 text-sm md:text-base">Trung tâm thành phố</h4>
+                    </div>
+                    <div class="px-2">
+                        <div class="w-12 h-12 mx-auto bg-white rounded-full flex items-center justify-center text-brand-600 mb-4 shadow-sm hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h12v18l-3-2-3 2-3-2-3 2V3zM9 7h6M9 11h6M9 15h3"></path></svg>
+                        </div>
+                        <h4 class="font-semibold text-brand-900 text-sm md:text-base">Có hóa đơn VAT</h4>
                     </div>
                 </div>
             </div>
@@ -669,7 +675,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 smsLink.removeAttribute('href');return false;
             }
             const room=bookingRoom.value==='king'?'Phòng đôi giường King (2 người lớn, 1 em bé), giá 300.000đ/phòng/đêm':'Triple Room (3 người lớn, 1 em bé), giá 350.000đ/phòng/đêm';
-            bookingMessage.value='Chào khách sạn Thành An 2, tôi muốn hỏi phòng trống:\n'+room+'\nNhận phòng: '+displayDate(checkIn.value)+'\nTrả phòng: '+displayDate(checkOut.value)+'\nKhách sạn kiểm tra và xác nhận giúp tôi nhé.';
+            bookingMessage.value='Chào khách sạn Thành An 2, tôi muốn đặt phòng:\n'+room+'\nNhận phòng: '+displayDate(checkIn.value)+'\nTrả phòng: '+displayDate(checkOut.value)+'\nKhách sạn xác nhận đặt phòng giúp tôi nhé.';
             const separator=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';
             smsLink.href='sms:0904055828'+separator+'body='+encodeURIComponent(bookingMessage.value);
             bookingStatus.textContent='';return true;
